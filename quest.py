@@ -39,7 +39,7 @@ create_order_body = '''
                      ''' 
 
 order_xml = '''
-                <Order>
+<Order>
     <EventInfo>
         <CollectionSiteID></CollectionSiteID>
         <EmailAuthorizationAddresses>

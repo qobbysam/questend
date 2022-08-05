@@ -11,6 +11,7 @@ from handle_test_end import handletestend
 from tinydb import TinyDB, Query
 import datetime
 import os
+
 base_dir = os.getcwd()
 
 dbname =  os.path.join(base_dir , "ser.db")
@@ -91,23 +92,34 @@ def handgetkey():
     msg = Query()
     table = db.table(from_)
 
-    res =  table.search(msg.id == key_)
+    res =  table.search(msg.client_id == key_)
 
     return jsonify(res)
 
 @app.route("/alldb/", methods=['GET'])
 def getall():
 
+    table = request.args.get("table")
+
+    if table is not None:
+      table_ = db.table(table)
+      return jsonify(table_.all())
     return jsonify(db.all())
 
+'''xmlmsg data types 
+  orderxml
+  referenceTestId
+  questOrderId
+  
+'''
 
-
-@app.route("/testend/", methods=['GET'])
+@app.route("/testend/", methods=['GET','POST'])
 def handtestend():
-  xmlmsg = request.args.get("xmlbody")
+  xmlmsg = request.json()
   type_ = request.args.get("sendtype")
+  client_id = request.args.get("clientid")
 
-  if handletestend(xmlmsg, type_):
+  if handletestend(xmlmsg,client_id ,type_):
     res = {'status': 200}
 
     return jsonify(res)
