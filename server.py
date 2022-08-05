@@ -5,6 +5,8 @@ import xmltodict
 
 import json
 
+from handle_test_end import handletestend
+
 
 from tinydb import TinyDB, Query
 import datetime
@@ -78,6 +80,45 @@ def status():
     res = {'status': 200}
 
     return jsonify(res)
+
+
+
+
+@app.route("/getkey/", methods=['GET'])
+def handgetkey():
+    key_ = request.args.get("key")
+    from_ = request.args.get("from")
+    msg = Query()
+    table = db.table(from_)
+
+    res =  table.search(msg.id == key_)
+
+    return jsonify(res)
+
+@app.route("/alldb/", methods=['GET'])
+def getall():
+
+    return jsonify(db.all())
+
+
+
+@app.route("/testend/", methods=['GET'])
+def handtestend():
+  xmlmsg = request.args.get("xmlbody")
+  type_ = request.args.get("sendtype")
+
+  if handletestend(xmlmsg, type_):
+    res = {'status': 200}
+
+    return jsonify(res)
+
+  else:
+    res = {'status': 500}
+
+    return jsonify(res)
+
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
