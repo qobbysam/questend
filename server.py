@@ -1,3 +1,4 @@
+from distutils.log import debug
 import uuid
 from flask import Flask, jsonify, request
 import xmltodict
@@ -79,4 +80,4 @@ def status():
     return jsonify(res)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
