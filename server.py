@@ -1,4 +1,3 @@
-from distutils.log import debug
 import uuid
 from flask import Flask, jsonify, request
 import xmltodict
@@ -110,7 +109,7 @@ def getall():
   orderxml
   referenceTestId
   questOrderId
-  
+
 '''
 
 @app.route("/testend/", methods=['GET','POST'])
