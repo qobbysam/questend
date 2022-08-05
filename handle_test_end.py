@@ -27,7 +27,7 @@ def save_db(tablename, result_ , client_id):
     to_save = {
                 "client_id": client_id,
                 "result" : result_,
-                "time_added": datetime.datetime.now()
+                "time_added": str(datetime.datetime.now())
             }
 
     table.insert(to_save)
@@ -94,6 +94,13 @@ def handletestend(xmlmsg, client_id ,type_send):
         save_db("updateorder",result_, client_id )
 
         return True
+    elif type_send == "fakesend":
+        from zp import order_body
+        result_ = client.service.CreateOrder(username,password, order_body)
+
+        save_db('fakesend', result_, client_id)
+        return True
+
     else:
         return False
     

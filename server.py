@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, World!"
+    return "Server is alife"
 
 
 
@@ -114,7 +114,7 @@ def getall():
 
 @app.route("/testend/", methods=['GET','POST'])
 def handtestend():
-  xmlmsg = request.json()
+  xmlmsg = request.json
   type_ = request.args.get("sendtype")
   client_id = request.args.get("clientid")
 
