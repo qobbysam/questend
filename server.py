@@ -103,6 +103,7 @@ def getall():
     if table is not None:
       table_ = db.table(table)
       return jsonify(table_.all())
+      
     return jsonify(db.all())
 
 '''xmlmsg data types 
