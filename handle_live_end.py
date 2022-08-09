@@ -38,7 +38,7 @@ def save_db(tablename, result_ , client_id):
 
 
 
-def handletestend(xmlmsg, client_id ,type_send):
+def handleliveend(xmlmsg, client_id ,type_send):
 
     if type_send == 'createorder':
 

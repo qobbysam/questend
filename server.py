@@ -5,6 +5,7 @@ import xmltodict
 import json
 
 from handle_test_end import handletestend
+from handle_live_end import handleliveend
 
 
 from tinydb import TinyDB, Query
@@ -129,7 +130,21 @@ def handtestend():
 
     return jsonify(res)
 
+@app.route("/liveend/", methods=['GET','POST'])
+def handliveend():
+  xmlmsg = request.json
+  type_ = request.args.get("sendtype")
+  client_id = request.args.get("clientid")
 
+  if handleliveend(xmlmsg,client_id ,type_):
+    res = {'status': 200}
+
+    return jsonify(res)
+
+  else:
+    res = {'status': 500}
+
+    return jsonify(res)
 
 
 if __name__ == "__main__":
