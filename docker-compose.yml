@@ -1,6 +1,6 @@
 
 
-version: "3"
+version: '3.9'
 services:
 
   db:
@@ -38,8 +38,10 @@ services:
       - DUMPPREFIX
 
       - POSTGRES_DB
+    
     depends_on:
       - db
+
     command: > 
         sh -c " python liveserver.py"
 
