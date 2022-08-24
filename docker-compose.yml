@@ -8,7 +8,7 @@ services:
     volumes:
       - ./postgis-data:/var/lib/postgresql
       - ./dbbackups:/backups
-      
+
     environment:
       # If you need to create multiple database you can add coma separated databases eg gis,data
       - POSTGRES_DB

@@ -2,16 +2,14 @@
 FROM python:3
 WORKDIR /code
 
-RUN apt-get update && apt-get install   gcc musl-dev   libffi-dev   
+RUN apt-get update && apt-get -y install   gcc musl-dev   libffi-dev    -y
 
-RUN apt-get install .build-deps \
+RUN apt-get -y install  \
     gcc \
-    python3-dev \
     musl-dev \
-    postgresql-dev \
-    geos\
-    && pip install --no-cache-dir psycopg2 \
-RUN apt-get update && apt-get install  g++ gcc libxslt-dev
+    libpq-dev python3-dev 
+
+RUN apt-get update && apt-get install  -y g++ gcc libxslt-dev -y
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
