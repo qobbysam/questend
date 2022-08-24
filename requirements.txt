@@ -5,3 +5,4 @@ xmltodict
 psycopg2
 GeoAlchemy2
 Shapely
+geos
