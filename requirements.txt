@@ -2,5 +2,5 @@ flask
 zeep
 tinydb
 xmltodict
-psycopg2-binary
+psycopg2
 GeoAlchemy2
