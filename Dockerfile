@@ -2,8 +2,8 @@
 FROM python:3
 WORKDIR /code
 
-RUN apt-get update && apt-get install --no-cache  gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
-RUN apt-get install --no-cache --virtual .build-deps \
+RUN apt-get update && apt-get install   gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
+RUN apt-get install .build-deps \
     gcc \
     python3-dev \
     musl-dev \
