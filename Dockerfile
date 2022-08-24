@@ -10,6 +10,7 @@ RUN apk add --no-cache --virtual .build-deps \
     postgresql-dev \
     && pip install --no-cache-dir psycopg2 \
     && apk del --no-cache .build-deps
+RUN apk add --update --no-cache g++ gcc libxslt-dev
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
