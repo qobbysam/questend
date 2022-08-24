@@ -19,7 +19,7 @@ def build_event_info(emails):
         <CollectionSiteID></CollectionSiteID>
         <EmailAuthorizationAddresses>
         {}
-
+        </EmailAuthorizationAddresses>
         <EndDateTime/>
     <!-- <EndDateTimeTimeZoneID/> -->
     </EventInfo>
@@ -71,10 +71,11 @@ def build_body(
             ReasonForTestID,
             ObservedRequested,
             SplitSpecimenRequested,
-            CSONumber,
-            CSOPrompt,
-            CSOText,
-            ResponseUrl):
+            # CSONumber,
+            # CSOPrompt,
+            # CSOText,
+            #ResponseUrl
+            ):
 
 
     event_info = build_event_info(emails=emails)
@@ -98,8 +99,8 @@ def build_body(
     </DonorInfo>
     
     <ClientInfo>
-        <ContactName>{}</ ContactName >
-        <TelephoneNumber>{}</ TelephoneNumber >
+        <ContactName>{}</ContactName>
+        <TelephoneNumber>{}</TelephoneNumber>
         <LabAccount>{}</LabAccount>
         <CSL>{}</CSL>
     </ClientInfo>
@@ -111,13 +112,7 @@ def build_body(
         <ReasonForTestID>{}</ReasonForTestID>
         <ObservedRequested>{}</ObservedRequested>
         <SplitSpecimenRequested>{}</SplitSpecimenRequested>
-        <CSOs>
-            <CSO>
-            <CSONumber>{}</CSONumber>
-            <CSOPrompt>{}</CSOPrompt>
-            <CSOText>{}</CSOText>
-            </CSO>
-        </CSOs> 
+
         
         <Screenings>
             <UnitCodes>
@@ -127,7 +122,7 @@ def build_body(
     </TestInfo>
     
     <ClientCustom>
-    <ResponseURL>{}</ResponseURL>
+  
     </ClientCustom>
 </Order>
 
@@ -151,11 +146,11 @@ def build_body(
         ReasonForTestID,
         ObservedRequested,
         SplitSpecimenRequested,
-        CSONumber,
-        CSOPrompt,
-        CSOText,
+        # CSONumber,
+        # CSOPrompt,
+        # CSOText,
         unitcodes_,
-        ResponseUrl
+        #ResponseUrl
 
 
     )
@@ -184,8 +179,8 @@ order_body = r'''
     </DonorInfo>
     
     <ClientInfo>
-        <ContactName>XanDER Smith</ ContactName >
-        <TelephoneNumber>9139139133</ TelephoneNumber >
+        <ContactName>XanDER Smith</ContactName >
+        <TelephoneNumber>9139139133</TelephoneNumber >
         <LabAccount>12345678</LabAccount>
         <CSL>001</CSL>
     </ClientInfo>

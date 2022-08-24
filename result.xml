@@ -1,0 +1,33 @@
+<?xml version="\" 1.0\""="1.0\""" encoding="\" utf-16\""="utf-16\"""?>\n<QuestMethodResponse xmlns:xsd="\" http://www.w3.org/2001/XMLSchema\""="http://www.w3.org/2001/XMLSchema\""" xmlns:xsi="\" http://www.w3.org/2001/XMLSchema-instance\""="http://www.w3.org/2001/XMLSchema-instance\""">\n
+
+
+    <MethodID>GETORDERDETAIL</MethodID>\n
+
+    <ClientReferenceID>ORDER#1124</ClientReferenceID>\n
+
+    <ReferenceTestID>Q00174602</ReferenceTestID>\n
+
+    <QuestOrderID>14992798</QuestOrderID>\n
+
+    <ResponseStatusID>SUCCESS</ResponseStatusID>\n
+
+    <DisplayURL>https://esp-load.employersolutions.com/Integration/OrderDetail?access_token=a45da1d0-3728-49f3-8f17-cb369450b76c</DisplayURL>\n
+
+    <Errors/>\n
+</QuestMethodResponse>
+
+
+<QuestMethodResponse xmlns:xsd="\" http://www.w3.org/2001/XMLSchema\""="http://www.w3.org/2001/XMLSchema\""" xmlns:xsi="\" http://www.w3.org/2001/XMLSchema-instance\""="http://www.w3.org/2001/XMLSchema-instance\""">\n
+    
+    <MethodID>CREATEORDER</MethodID>\n
+    
+    <ClientReferenceID>ORDER#1124</ClientReferenceID>\n
+    
+    <ReferenceTestID>Q00174602</ReferenceTestID>\n
+    
+    <QuestOrderID>14992798</QuestOrderID>\n
+    
+    <ResponseStatusID>SUCCESS</ResponseStatusID>\n
+    
+    <Errors/>\n
+</QuestMethodResponse>

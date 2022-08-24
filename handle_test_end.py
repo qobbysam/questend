@@ -1,10 +1,13 @@
-from unittest import result
-from zeep import Client
+import json
+import os
 import datetime
 
+from unittest import result
+from zeep import Client
+
 from tinydb import TinyDB, Query
-import datetime
-import os
+import xmltodict
+import sys
 
 from zp import order_body, build_body
 
@@ -24,22 +27,30 @@ db = TinyDB(dbname)
 
 client = Client(wsdl_url)
 
-def save_db(tablename, result_ , client_id):
-    table = db.table(tablename)
 
+def save_db(tablename, result_ , client_id):
+
+#clean #last updated modifications
+
+    dict_res = xmltodict.parse(result_)
+    json_res = json.dumps(dict_res)
     to_save = {
+                "table": tablename,
                 "client_id": client_id,
-                "result" : result_,
+                "result" : json_res,
+                "updated" : False,
                 "time_added": str(datetime.datetime.now())
             }
 
-    table.insert(to_save)
+    db.insert(to_save)
 
 
 
 
 def handletestend(xmlmsg, client_id ,type_send):
 
+    print(xmlmsg, file=sys.stderr)
+    
     if type_send == 'createorder':
 
         result_ = client.service.CreateOrder(username,password, xmlmsg["orderXml"])
@@ -52,6 +63,10 @@ def handletestend(xmlmsg, client_id ,type_send):
     elif type_send == 'createorderbuild':
 
         detail = xmlmsg['orderBody']
+
+        print(detail)
+        print(detail, file=sys.stderr)
+
 
         body = build_body(
             emails= detail['emails'],
@@ -73,10 +88,10 @@ def handletestend(xmlmsg, client_id ,type_send):
             ReasonForTestID= detail['reasonForTestID'],
             ObservedRequested= detail['observedRequested'],
             SplitSpecimenRequested= detail['splitSpecimenRequested'],
-            CSONumber= detail['csoNumber'],
-            CSOPrompt= detail['csoPrompt'],
-            CSOText= detail['csoText'],
-            ResponseUrl= detail['responseUrl']
+            # CSONumber= detail['csoNumber'],
+            # CSOPrompt= detail['csoPrompt'],
+            # CSOText= detail['csoText'],
+            #ResponseUrl= detail['responseUrl']
         )
 
         result_ = client.service.CreateOrder(username,password, body)
