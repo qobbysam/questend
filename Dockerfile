@@ -8,6 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
     python3-dev \
     musl-dev \
     postgresql-dev \
+    geos\
     && pip install --no-cache-dir psycopg2 \
     && apk del --no-cache .build-deps
 RUN apk add --update --no-cache g++ gcc libxslt-dev
