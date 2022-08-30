@@ -59,4 +59,4 @@ services:
       - db
 
     command: > 
-        sh -c " python liveserver.py"
+        sh -c " gunicorn --bind 0.0.0.0:5000 liveserver:app"
